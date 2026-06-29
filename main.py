@@ -1,8 +1,7 @@
 import requests
 
 try:
-    
-
+    print("===CRYPTO-PRICE-TRACKER===")
     while True:
         coin = input("Enter cryptocurrency name (or 'exit' to quit): ").lower().strip()
         if coin == "exit":
@@ -12,19 +11,23 @@ try:
         url = f"https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies=usd"
         response = requests.get(url)
         
-        params = {"crypto_id": coin, "currency": "usd"}
+        if response.status_code == 200:
+            params = {"crypto_id": coin, "currency": "usd"}
 
-        response = requests.get(url, params=params)
+            response = requests.get(url, params=params)
 
-        data = response.json()
-        if coin in data:
-            price = data[coin]["usd"]
+            data = response.json()
+            if coin in data:
+                price = data[coin]["usd"]
 
-            print("----- Result -----")
-            print(f" Coin: {coin}\n Price: {price}")
-            print("------------------")
+                print("----- Result -----")
+                print(f" Coin: {coin}\n Price: {price}")
+                print("------------------")
+            else:
+                print("Coin not found. try\n dogecoin\n bitcoin\n ethereum")
         else:
-            print("Coin not found.")
+            print("API request failed.")
+
     
 except requests.exception.RequestException:
     print("Network error")
