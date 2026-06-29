@@ -22,19 +22,6 @@ A Python application that fetches real-time cryptocurrency prices using the Coin
 pip install requests
 ```
 
-## Run
-
-```bash
-python crypto_tracker.py
-```
-
-## API Used
-
-CoinGecko Public API
-
-Endpoint:
-https://api.coingecko.com/api/v3/simple/price
-
 ## Output
 The application displays the current price of the entered cryptocurrency in USD.
 

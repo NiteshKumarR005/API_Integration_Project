@@ -1,7 +1,8 @@
 import requests
 
+print("===CRYPTO-PRICE-TRACKER===")
+
 try:
-    print("===CRYPTO-PRICE-TRACKER===")
     while True:
         coin = input("Enter cryptocurrency name (or 'exit' to quit): ").lower().strip()
         if coin == "exit":
